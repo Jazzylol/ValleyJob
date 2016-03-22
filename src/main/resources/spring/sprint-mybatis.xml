@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+
+	<!--
+    <import resource="classpath:config/dubbo.xml" />
+    <import resource="classpath:config/spring-login.xml" />
+    <import resource="classpath:config/spring-other.xml" />
+    -->
+
+	<!--propertyConfig <bean id="propertyConfig" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"> 
+		<property name="locations"> <list> <value>classpath:config/database.properties 
+		</value> </list> </property> </bean> -->
+	<!-- dataSource -->
+	<!--读取数据源信息 -->
+	<context:property-placeholder location="classpath:*.properties"/>
+	<!-- 数据库连接配置 -->
+ 	<bean id="readDataSource" class="org.logicalcobwebs.proxool.ProxoolDataSource">
+		<property name="driver">
+			<value>${job.proxool.driver-class}</value>
+		</property>
+		<property name="driverUrl">
+			<value>${job.proxool.driver-url}</value>
+		</property>
+		<property name="user">
+			<value>${job.proxool.user}</value>
+		</property>
+		<property name="password">
+			<value>${job.proxool.password}</value>
+		</property>
+		<property name="alias">
+			<value>${job.proxool.alias}</value>
+		</property>
+		<property name="maximumActiveTime">
+			<value>${job.proxool.maximum-active-time}</value>
+		</property>
+		<property name="houseKeepingSleepTime">
+			<value>${job.proxool.house-keeping-sleep-time}</value>
+		</property>
+		<property name="houseKeepingTestSql">
+		    <value>${job.proxool.house-keeping-test-sql}</value>
+		</property>
+		<property name="maximumConnectionCount">
+			<value>${job.proxool.maximum-connection-count}</value>
+		</property>
+		<property name="minimumConnectionCount">
+			<value>${job.proxool.minimum-connection-count}</value>
+		</property>
+		<property name="prototypeCount">
+			<value>${job.proxool.prototype-count}</value>
+		</property>
+		<property name="trace">
+			<value>${job.proxool.trace}</value>
+		</property>
+		<property name="statisticsLogLevel">
+			<value>${job.proxool.statistics-log-level}</value>
+		</property>
+		<property name="maximumConnectionLifetime">
+			<value>${job.proxool.maximum-connection-lifetime}</value>
+		</property>
+		<property name="simultaneousBuildThrottle">
+			<value>${job.proxool.simultaneous-build-throttle}</value>
+		</property>
+	</bean>
+
+	<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="readAgentSqlSessionFactory">
+		<property name="dataSource" ref="readDataSource"/>
+		<property name="configLocation" value="classpath:mappers/sqlmap-config.xml"/>
+		<property name="mapperLocations" value="classpath:mappers/**/read/*.xml"/>
+	</bean>
+
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer" id="readAgentMapperScannerConfigurer">
+		<property name="basePackage" value="com.manyi.iw.agent.sale.dao.agent.read.custom"/>
+		<property name="sqlSessionFactoryBeanName" value="readAgentSqlSessionFactory"/>
+	</bean>
+
+	<bean id="writeDataSource" class="org.logicalcobwebs.proxool.ProxoolDataSource">
+		<property name="driver">
+			<value>${job.proxool.driver-class}</value>
+		</property>
+		<property name="driverUrl">
+			<value>${job.proxool.driver-url}</value>
+		</property>
+		<property name="user">
+			<value>${job.proxool.user}</value>
+		</property>
+		<property name="password">
+			<value>${job.proxool.password}</value>
+		</property>
+		<property name="alias">
+			<value>${job.proxool.alias}</value>
+		</property>
+		<property name="maximumActiveTime">
+			<value>${job.proxool.maximum-active-time}</value>
+		</property>
+		<property name="houseKeepingSleepTime">
+			<value>${job.proxool.house-keeping-sleep-time}</value>
+		</property>
+		<property name="houseKeepingTestSql">
+			<value>${job.proxool.house-keeping-test-sql}</value>
+		</property>
+		<property name="maximumConnectionCount">
+			<value>${job.proxool.maximum-connection-count}</value>
+		</property>
+		<property name="minimumConnectionCount">
+			<value>${job.proxool.minimum-connection-count}</value>
+		</property>
+		<property name="prototypeCount">
+			<value>${job.proxool.prototype-count}</value>
+		</property>
+		<property name="trace">
+			<value>${job.proxool.trace}</value>
+		</property>
+		<property name="statisticsLogLevel">
+			<value>${job.proxool.statistics-log-level}</value>
+		</property>
+		<property name="maximumConnectionLifetime">
+			<value>${job.proxool.maximum-connection-lifetime}</value>
+		</property>
+		<property name="simultaneousBuildThrottle">
+			<value>${job.proxool.simultaneous-build-throttle}</value>
+		</property>
+	</bean>
+	<!-- 配置druid数据源 -->
+
+	<!--<bean name="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">-->
+		<!--<property name="url" value="${druid.jdbc.url}" />-->
+		<!--<property name="username" value="${druid.jdbc.username}" />-->
+		<!--<property name="password" value="${druid.jdbc.password}" />-->
+
+		<!--&lt;!&ndash; 初始化连接大小 &ndash;&gt;-->
+		<!--<property name="initialSize" value="${druid.initialSize}" />-->
+		<!--&lt;!&ndash; 连接池最大使用连接数量 &ndash;&gt;-->
+		<!--<property name="maxActive" value="${druid.maxActive}" />-->
+		<!--&lt;!&ndash; 连接池最大空闲 ,据说已经不再使用&ndash;&gt;-->
+		<!--<property name="maxIdle" value="${druid.maxIdle}" />-->
+		<!--&lt;!&ndash; 连接池最小空闲 &ndash;&gt;-->
+		<!--<property name="minIdle" value="${druid.minIdle}" />-->
+		<!--&lt;!&ndash; 获取连接最大等待时间 &ndash;&gt;-->
+		<!--<property name="maxWait" value="${druid.maxWait}" />-->
+
+		<!--&lt;!&ndash; <property name="poolPreparedStatements" value="true" /> <property name="maxPoolPreparedStatementPerConnectionSize" value="33" /> &ndash;&gt;-->
+
+		<!--<property name="validationQuery" value="${druid.validationQuery}" />-->
+		<!--<property name="testOnBorrow" value="false" />-->
+		<!--<property name="testOnReturn" value="false" />-->
+		<!--<property name="testWhileIdle" value="true" />-->
+
+		<!--&lt;!&ndash; timeBetweenEvictionRunsMillis毫秒秒检查一次连接池中空闲的连接,把空闲时间超过minEvictableIdleTimeMillis毫秒的连接断开,直到连接池中的连接数到minIdle为止 &ndash;&gt;-->
+		<!--&lt;!&ndash; 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 &ndash;&gt;-->
+		<!--<property name="timeBetweenEvictionRunsMillis" value="${druid.timeBetweenEvictionRunsMillis}" />-->
+		<!--&lt;!&ndash; 配置一个连接在池中最小生存的时间，单位是毫秒 &ndash;&gt;-->
+		<!--<property name="minEvictableIdleTimeMillis" value="${druid.minEvictableIdleTimeMillis}" />-->
+
+		<!--&lt;!&ndash; 打开removeAbandoned功能 &ndash;&gt;-->
+		<!--<property name="removeAbandoned" value="true" />-->
+		<!--&lt;!&ndash; 1800秒，也就是30分钟 &ndash;&gt;-->
+		<!--<property name="removeAbandonedTimeout" value="${druid.removeAbandonedTimeout}" />-->
+		<!--&lt;!&ndash; 关闭abanded连接时输出错误日志 &ndash;&gt;-->
+		<!--<property name="logAbandoned" value="true" />-->
+
+		<!--&lt;!&ndash; 监控数据库 &ndash;&gt;-->
+		<!--&lt;!&ndash; <property name="filters" value="stat" /> &ndash;&gt;-->
+		<!--<property name="filters" value="mergeStat" />-->
+	<!--</bean>-->
+	<!-- -->
+	<!-- aop:config> <aop:pointcut id="serviceOperation" expression="execution(* 
+		lavasoft.*.service.*(..))" /> <aop:advisor pointcut-ref="serviceOperation" 
+		advice-ref="txAdvice" /> </aop:config> <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"> 
+		<property name="dataSource" ref="dataSource" /> </bean> -->
+	<!-- <tx:advice id="txAdvice" transaction-manager="transactionManager"> 
+		<tx:attributes> <tx:method name="create*" rollback-for="Exception" /> <tx:method 
+		name="delete*" rollback-for="Exception" /> <tx:method name="save*" rollback-for="Exception" 
+		/> <tx:method name="insert*" rollback-for="Exception" /> <tx:method name="update*" 
+		rollback-for="Exception" /> <tx:method name="del*" rollback-for="Exception" 
+		/> <tx:method name="vote*" rollback-for="Exception" /> <tx:method name="*" 
+		read-only="true" rollback-for="Exception" /> </tx:attributes> </tx:advice> -->
+
+	<!--配置spring事务管理 -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="writeDataSource"/>
+	</bean>
+	
+	<bean id="transactionInterceptor"  
+        class="org.springframework.transaction.interceptor.TransactionInterceptor">  
+        <property name="transactionManager" ref="transactionManager" />  
+        <!-- 配置事务属性 -->  
+        <property name="transactionAttributes">  
+            <props>
+                <prop key="updateCheckedCartProductOnAsuwish">PROPAGATION_NOT_SUPPORTED,readOnly</prop>
+                <prop key="updateAndSelectCheckedCartProductOnAsuwish">PROPAGATION_NOT_SUPPORTED,readOnly</prop>
+                <prop key="getSelectCheckedCartProductOnAsuwish">PROPAGATION_NOT_SUPPORTED,readOnly</prop>
+                <prop key="createSo">PROPAGATION_NOT_SUPPORTED,readOnly</prop>
+                <prop key="*">PROPAGATION_REQUIRED</prop>  
+            </props>  
+        </property>  
+    </bean>
+      
+    <bean class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">  
+        <property name="beanNames">  
+            <list>  
+                <value>*Service</value>
+            </list>  
+        </property>  
+        <property name="interceptorNames">  
+            <list>  
+                <value>transactionInterceptor</value>  
+            </list>  
+        </property>  
+    </bean>  
+	
+	<bean class="com.danga.MemCached.SockIOPool" id="sockIOPool"
+		init-method="initialize" factory-method="getInstance" destroy-method="shutDown">
+		<property name="servers" value="${memcached.servers}" />
+		<property name="weights" value="${memcached.weights}" />
+		<property name="nagle" value="false" />
+		<property name="maintSleep" value="30" />
+		<property name="initConn" value="5" />
+		<property name="minConn" value="5" /> 
+		<property name="maxConn" value="500" />
+		<property name="maxIdle" value="21600000" />
+	</bean>
+
+</beans>

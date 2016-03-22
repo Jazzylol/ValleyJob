@@ -3,9 +3,6 @@
         PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
-    <classPathEntry
-            location="D:\WorkSoftware\apache-maven-3.0.5\repository\mysql\mysql-connector-java\5.1.25\mysql-connector-java-5.1.25.jar"/>
-
     <context defaultModelType="flat" id="write" targetRuntime="MyBatis3">
         <property name="renamePlugin.search" value="CV"/>
         <property name="renamePlugin.replace" value=""/>
@@ -14,7 +11,7 @@
         <plugin type="x.flyspace.mybatisgenerator.plugin.MySQLRowBoundsPlugin" />
         <plugin type="x.flyspace.mybatisgenerator.plugin.RenamePlugin" />
         <plugin type="x.flyspace.mybatisgenerator.plugin.SeparateUserCodePlugin" />
-        <commentGenerator >
+        <commentGenerator type="x.flyspace.mybatisgenerator.comment.CommentGenerator">
             <property name="suppressAllComments" value="false"/>
             <property name="suppressDate" value="true"/>
         </commentGenerator>
@@ -22,7 +19,7 @@
                         connectionURL="jdbc:mysql://192.168.1.156:3306/meishi?characterEncoding=utf8" userId="product_user"
                         password="product_user">
         </jdbcConnection>
-        <javaTypeResolver>
+        <javaTypeResolver  type="x.flyspace.mybatisgenerator.type.CustomJavaTypeResolver">
             <property name="customTypeMap" value="TINYINT:java.lang.Integer"/>
         </javaTypeResolver>
         <javaModelGenerator targetPackage="com.coldridge.valley.job.model.po.mbg" targetProject="src/main/java">
@@ -56,84 +53,110 @@
             <property name="useActualColumnNames" value="false"/>
         </table>
 </context>
+    <context defaultModelType="flat" id="read" targetRuntime="MyBatis3">
+        <property name="renamePlugin.search" value="CV"/>
+        <property name="renamePlugin.replace" value=""/>
+        <property name="renamePlugin.prefix" value="MBG"/>
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+        <plugin type="x.flyspace.mybatisgenerator.plugin.MySQLRowBoundsPlugin" />
+        <plugin type="x.flyspace.mybatisgenerator.plugin.RenamePlugin" />
+        <plugin type="x.flyspace.mybatisgenerator.plugin.SeparateUserCodePlugin" />
+        <commentGenerator type="x.flyspace.mybatisgenerator.comment.CommentGenerator">
+            <property name="suppressAllComments" value="false"/>
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://192.168.1.156:3306/meishi?characterEncoding=utf8" userId="product_user"
+                        password="product_user">
+        </jdbcConnection>
+        <javaTypeResolver  type="x.flyspace.mybatisgenerator.type.CustomJavaTypeResolver">
+            <property name="customTypeMap" value="TINYINT:java.lang.Integer"/>
+        </javaTypeResolver>
+        <javaModelGenerator targetPackage="com.coldridge.valley.job.model.po.mbg" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+            <property name="renamePlugin.prefix" value=""/>
+        </javaModelGenerator>
+        <sqlMapGenerator targetPackage="mappers.meishi.read.mbg" targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+            <property name="renamePlugin.search" value="Mapper\z"/>
+            <property name="renamePlugin.replace" value="ReadMapper"/>
+            <property name="separateUserCodePlugin.targetPackage" value="mappers.meishi.read.custom"/>
+            <property name="separateUserCodePlugin.search" value="Dao\z"/>
+            <property name="separateUserCodePlugin.replace" value="Mapper"/>
+        </sqlMapGenerator>
+        <javaClientGenerator targetPackage="com.coldridge.valley.job.dao.meishi.read.mbg"
+                             targetProject="src/main/java" type="XMLMAPPER">
+            <property name="enableSubPackages" value="true"/>
+            <property name="exampleMethodVisibility" value="public"/>
+            <property name="methodNameCalculator" value="default"/>
+            <property name="renamePlugin.search" value="Mapper\z"/>
+            <property name="renamePlugin.replace" value="ReadDao"/>
+            <property name="separateUserCodePlugin.targetPackage"
+                      value="com.coldridge.valley.job.dao.meishi.read.custom"/>
+            <property name="separateUserCodePlugin.search" value="\AMBG"/>
+            <property name="separateUserCodePlugin.replace" value=""/>
+        </javaClientGenerator>
+        <table enableDeleteByExample="false"
+                enableDeleteByPrimaryKey="false"
+                enableInsert="false" enableUpdateByExample="false"
+                enableUpdateByPrimaryKey="false" schema="meishi"
+                tableName="huoguo">
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+    </context>
     <!--
                <context defaultModelType="flat" id="read" targetRuntime="MyBatis3">
                    <property name="renamePlugin.search" value="CV"/>
                    <property name="renamePlugin.replace" value=""/>
                    <property name="renamePlugin.prefix" value="MBG"/>
-
                    <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
                    <plugin type="x.flyspace.mybatisgenerator.plugin.MySQLRowBoundsPlugin"/>
                    <plugin type="x.flyspace.mybatisgenerator.plugin.RenamePlugin"/>
                    <plugin type="x.flyspace.mybatisgenerator.plugin.SeparateUserCodePlugin"/>
-
-                   <commentGenerator type="x.flyspace.mybatisgenerator.comment.CommentGenerator">
-                       <property name="suppressAllComments" value="false"/>
-                       <property name="suppressDate" value="true"/>
-                   </commentGenerator>
-
+    <commentGenerator type="x.flyspace.mybatisgenerator.comment.CommentGenerator">
+        <property name="suppressAllComments" value="false"/>
+        <property name="suppressDate" value="true"/>
+    </commentGenerator>
                     <jdbcConnection driverClass="com.mysql.jdbc.Driver"
                                     connectionURL="jdbc:mysql://192.168.1.156:3306/meishi?characterEncoding=utf8" userId="product_user"
                                     password="product_user">
                     </jdbcConnection>
-
-                   <javaTypeResolver type="x.flyspace.mybatisgenerator.type.CustomJavaTypeResolver">
-                       <property name="customTypeMap" value="TINYINT:java.lang.Integer"/>
-                   </javaTypeResolver>
-
-                   <javaModelGenerator targetPackage="com.coldridge.valley.job.model.po.mbg" targetProject="src/main/java">
-                       <property name="enableSubPackages" value="true"/>
-                       <property name="trimStrings" value="true"/>
-                       <property name="renamePlugin.prefix" value=""/>
-                   </javaModelGenerator>
-
-                   <sqlMapGenerator targetPackage="mybatis.mappers.job.meishi.write.mbg" targetProject="src/main/resources">
-                       <property name="enableSubPackages" value="true"/>
-                       <property name="renamePlugin.search" value="Mapper\z"/>
-                       <property name="renamePlugin.replace" value="WriteMapper"/>
-                       <property name="separateUserCodePlugin.targetPackage" value="mybatis.mappers.job.meishi.write.custom"/>
-                       <property name="separateUserCodePlugin.search" value="Dao\z"/>
-                       <property name="separateUserCodePlugin.replace" value="Mapper"/>
-                   </sqlMapGenerator>
-
-                   <javaClientGenerator targetPackage="com.coldridge.valley.job.dao.meishi.write.mbg"
-                                        targetProject="src/main/java" type="XMLMAPPER">
-                       <property name="enableSubPackages" value="true"/>
-                       <property name="exampleMethodVisibility" value="public"/>
-                       <property name="methodNameCalculator" value="default"/>
-                       <property name="renamePlugin.search" value="Mapper\z"/>
-                       <property name="renamePlugin.replace" value="WriteDao"/>
-                       <property name="separateUserCodePlugin.targetPackage" value="com.coldridge.valley.job.dao.meishi.write.custom"/>
-                       <property name="separateUserCodePlugin.search" value="\AMBG"/>
-                       <property name="separateUserCodePlugin.replace" value=""/>
-                   </javaClientGenerator>
-             
-                   <sqlMapGenerator targetPackage="mybatis.mappers.job.meishi.read.mbg" targetProject="src/main/resources">
-                       <property name="enableSubPackages" value="true"/>
-                       <property name="renamePlugin.search" value="Mapper\z"/>
-                       <property name="renamePlugin.replace" value="WriteMapper"/>
-                       <property name="separateUserCodePlugin.targetPackage" value="mybatis.mappers.job.meishi.read.custom"/>
-                       <property name="separateUserCodePlugin.search" value="Dao\z"/>
-                       <property name="separateUserCodePlugin.replace" value="Mapper"/>
-                   </sqlMapGenerator>
-
-                   <javaClientGenerator targetPackage="com.coldridge.valley.job.dao.meishi.read.mbg"
-                                        targetProject="src/main/java" type="XMLMAPPER">
-                       <property name="enableSubPackages" value="true"/>
-                       <property name="exampleMethodVisibility" value="public"/>
-                       <property name="methodNameCalculator" value="default"/>
-                       <property name="renamePlugin.search" value="Mapper\z"/>
-                       <property name="renamePlugin.replace" value="WriteDao"/>
-                       <property name="separateUserCodePlugin.targetPackage" value="com.coldridge.valley.job.dao.meishi.read.custom"/>
-                       <property name="separateUserCodePlugin.search" value="\AMBG"/>
-                       <property name="separateUserCodePlugin.replace" value=""/>
-                   </javaClientGenerator>
-             
-                   <table enableDeleteByExample="false" enableDeleteByPrimaryKey="false"
-                          enableInsert="false" enableUpdateByExample="false" enableUpdateByPrimaryKey="false" schema="meishi"
-                          tableName="huoguo">
-                       <property name="useActualColumnNames" value="false"/>
-                   </table>
-               </context>
-            -->
+                    <javaTypeResolver  type="x.flyspace.mybatisgenerator.type.CustomJavaTypeResolver">
+                        <property name="customTypeMap" value="TINYINT:java.lang.Integer"></property>
+                    </javaTypeResolver>
+    <javaModelGenerator targetPackage="com.coldridge.valley.job.model.po.mbg" targetProject="src/main/java">
+        <property name="enableSubPackages" value="true"/>
+        <property name="trimStrings" value="true"/>
+        <property name="renamePlugin.prefix" value=""/>
+    </javaModelGenerator>
+    <sqlMapGenerator targetPackage="mappers.meishi.read.mbg" targetProject="src/main/resources">
+        <property name="enableSubPackages" value="true"/>
+        <property name="renamePlugin.search" value="Mapper\z"/>
+        <property name="renamePlugin.replace" value="ReadMapper"/>
+        <property name="separateUserCodePlugin.targetPackage" value="mappers.meishi.read.custom"/>
+        <property name="separateUserCodePlugin.search" value="Dao\z"/>
+        <property name="separateUserCodePlugin.replace" value="Mapper"/>
+    </sqlMapGenerator>
+    <javaClientGenerator targetPackage="com.coldridge.valley.job.dao.meishi.read.mbg"
+                         targetProject="src/main/java" type="XMLMAPPER">
+        <property name="enableSubPackages" value="true"/>
+        <property name="exampleMethodVisibility" value="public"/>
+        <property name="methodNameCalculator" value="default"/>
+        <property name="renamePlugin.search" value="Mapper\z"/>
+        <property name="renamePlugin.replace" value="ReadDao"/>
+        <property name="separateUserCodePlugin.targetPackage"
+                  value="com.coldridge.valley.job.dao.meishi.read.custom"/>
+        <property name="separateUserCodePlugin.search" value="\AMBG"/>
+        <property name="separateUserCodePlugin.replace" value=""/>
+    </javaClientGenerator>
+    <table
+            enableDeleteByExample="false"
+            enableDeleteByPrimaryKey="false"
+            enableInsert="false" enableUpdateByExample="false"
+            enableUpdateByPrimaryKey="false" schema="meishi"
+            tableName="huoguo">
+        <property name="useActualColumnNames" value="false"/>
+    </table>
+</context>-->
 </generatorConfiguration>

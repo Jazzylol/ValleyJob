@@ -264,52 +264,52 @@ public class HuoguoExample extends BaseExample {
             return (Criteria) this;
         }
 
-        public Criteria andTypeEqualTo(Byte value) {
+        public Criteria andTypeEqualTo(Integer value) {
             addCriterion("type =", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andTypeNotEqualTo(Byte value) {
+        public Criteria andTypeNotEqualTo(Integer value) {
             addCriterion("type <>", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andTypeGreaterThan(Byte value) {
+        public Criteria andTypeGreaterThan(Integer value) {
             addCriterion("type >", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andTypeGreaterThanOrEqualTo(Byte value) {
+        public Criteria andTypeGreaterThanOrEqualTo(Integer value) {
             addCriterion("type >=", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andTypeLessThan(Byte value) {
+        public Criteria andTypeLessThan(Integer value) {
             addCriterion("type <", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andTypeLessThanOrEqualTo(Byte value) {
+        public Criteria andTypeLessThanOrEqualTo(Integer value) {
             addCriterion("type <=", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andTypeIn(List<Byte> values) {
+        public Criteria andTypeIn(List<Integer> values) {
             addCriterion("type in", values, "type");
             return (Criteria) this;
         }
 
-        public Criteria andTypeNotIn(List<Byte> values) {
+        public Criteria andTypeNotIn(List<Integer> values) {
             addCriterion("type not in", values, "type");
             return (Criteria) this;
         }
 
-        public Criteria andTypeBetween(Byte value1, Byte value2) {
+        public Criteria andTypeBetween(Integer value1, Integer value2) {
             addCriterion("type between", value1, value2, "type");
             return (Criteria) this;
         }
 
-        public Criteria andTypeNotBetween(Byte value1, Byte value2) {
+        public Criteria andTypeNotBetween(Integer value1, Integer value2) {
             addCriterion("type not between", value1, value2, "type");
             return (Criteria) this;
         }
@@ -654,52 +654,52 @@ public class HuoguoExample extends BaseExample {
             return (Criteria) this;
         }
 
-        public Criteria andShopStarsEqualTo(Byte value) {
+        public Criteria andShopStarsEqualTo(Integer value) {
             addCriterion("shop_stars =", value, "shopStars");
             return (Criteria) this;
         }
 
-        public Criteria andShopStarsNotEqualTo(Byte value) {
+        public Criteria andShopStarsNotEqualTo(Integer value) {
             addCriterion("shop_stars <>", value, "shopStars");
             return (Criteria) this;
         }
 
-        public Criteria andShopStarsGreaterThan(Byte value) {
+        public Criteria andShopStarsGreaterThan(Integer value) {
             addCriterion("shop_stars >", value, "shopStars");
             return (Criteria) this;
         }
 
-        public Criteria andShopStarsGreaterThanOrEqualTo(Byte value) {
+        public Criteria andShopStarsGreaterThanOrEqualTo(Integer value) {
             addCriterion("shop_stars >=", value, "shopStars");
             return (Criteria) this;
         }
 
-        public Criteria andShopStarsLessThan(Byte value) {
+        public Criteria andShopStarsLessThan(Integer value) {
             addCriterion("shop_stars <", value, "shopStars");
             return (Criteria) this;
         }
 
-        public Criteria andShopStarsLessThanOrEqualTo(Byte value) {
+        public Criteria andShopStarsLessThanOrEqualTo(Integer value) {
             addCriterion("shop_stars <=", value, "shopStars");
             return (Criteria) this;
         }
 
-        public Criteria andShopStarsIn(List<Byte> values) {
+        public Criteria andShopStarsIn(List<Integer> values) {
             addCriterion("shop_stars in", values, "shopStars");
             return (Criteria) this;
         }
 
-        public Criteria andShopStarsNotIn(List<Byte> values) {
+        public Criteria andShopStarsNotIn(List<Integer> values) {
             addCriterion("shop_stars not in", values, "shopStars");
             return (Criteria) this;
         }
 
-        public Criteria andShopStarsBetween(Byte value1, Byte value2) {
+        public Criteria andShopStarsBetween(Integer value1, Integer value2) {
             addCriterion("shop_stars between", value1, value2, "shopStars");
             return (Criteria) this;
         }
 
-        public Criteria andShopStarsNotBetween(Byte value1, Byte value2) {
+        public Criteria andShopStarsNotBetween(Integer value1, Integer value2) {
             addCriterion("shop_stars not between", value1, value2, "shopStars");
             return (Criteria) this;
         }

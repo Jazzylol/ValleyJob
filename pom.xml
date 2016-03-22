@@ -36,7 +36,6 @@
         <jsp.api.version>2.3.1</jsp.api.version>
         <mybatis.generator.version>1.3.2</mybatis.generator.version>
         <commons.lang3.version>3.3.2</commons.lang3.version>
-        <xmemcached.version>1.4.3</xmemcached.version>
 
         <junit.version>4.11</junit.version>
 
@@ -58,14 +57,38 @@
             </properties>
         </profile>
         <profile>
-            <id>prod</id>
+            <id>dev</id>
             <properties>
-                <env>prod</env>
+                <env>dev</env>
             </properties>
         </profile>
     </profiles>
 
     <dependencies>
+        <!--数据库连接池-->
+        <dependency>
+            <groupId>proxool</groupId>
+            <artifactId>proxool</artifactId>
+            <version>0.9.1</version>
+        </dependency>
+        <dependency>
+            <groupId>proxool</groupId>
+            <artifactId>proxool-cglib</artifactId>
+            <version>0.9.1</version>
+        </dependency>
+
+        <!--memcache client 以及 mbatis插件-->
+        <dependency>
+            <groupId>org.mybatis.caches</groupId>
+            <artifactId>mybatis-memcached</artifactId>
+            <version>1.0.0-beta1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.danggan</groupId>
+            <artifactId>java_memcached</artifactId>
+            <version>release_2.6.6</version>
+        </dependency>
+
         <dependency>
             <groupId>net.sf.json-lib</groupId>
             <artifactId>json-lib</artifactId>
@@ -190,11 +213,6 @@
             <artifactId>commons-lang3</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>com.googlecode.xmemcached</groupId>
-            <artifactId>xmemcached</artifactId>
-        </dependency>
-
         <!-- provided -->
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -233,6 +251,11 @@
             <groupId>org.mybatis.generator</groupId>
             <artifactId>mybatis-generator-plugins</artifactId>
             <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>1.7.2</version>
         </dependency>
     </dependencies>
 
@@ -413,12 +436,6 @@
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-lang3</artifactId>
                 <version>${commons.lang3.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.googlecode.xmemcached</groupId>
-                <artifactId>xmemcached</artifactId>
-                <version>${xmemcached.version}</version>
             </dependency>
 
             <!-- provided -->
