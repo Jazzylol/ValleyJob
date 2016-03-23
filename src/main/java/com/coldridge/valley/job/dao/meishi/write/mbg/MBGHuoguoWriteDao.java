@@ -1,7 +1,7 @@
 package com.coldridge.valley.job.dao.meishi.write.mbg;
 
-import com.coldridge.valley.job.model.po.mbg.Huoguo;
-import com.coldridge.valley.job.model.po.mbg.HuoguoExample;
+import com.coldridge.valley.job.model.po.Huoguo;
+import com.coldridge.valley.job.model.po.HuoguoExample;
 import org.apache.ibatis.annotations.Param;
 
 public interface MBGHuoguoWriteDao {

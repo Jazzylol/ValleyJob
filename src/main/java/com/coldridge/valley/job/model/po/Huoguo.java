@@ -1,4 +1,4 @@
-package com.coldridge.valley.job.model.po.mbg;
+package com.coldridge.valley.job.model.po;
 
 public class Huoguo {
     /**

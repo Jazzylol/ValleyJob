@@ -68,15 +68,15 @@
 		</property>
 	</bean>
 
-	<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="readAgentSqlSessionFactory">
+	<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="readMeishiSqlSessionFactory">
 		<property name="dataSource" ref="readDataSource"/>
 		<property name="configLocation" value="classpath:mappers/sqlmap-config.xml"/>
-		<property name="mapperLocations" value="classpath:mappers/**/read/*.xml"/>
+		<property name="mapperLocations" value="classpath:mappers/**/read/mbg/*.xml"/>
 	</bean>
 
-	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer" id="readAgentMapperScannerConfigurer">
-		<property name="basePackage" value="com.manyi.iw.agent.sale.dao.agent.read.custom"/>
-		<property name="sqlSessionFactoryBeanName" value="readAgentSqlSessionFactory"/>
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer" id="readMeishiMapperScannerConfigurer">
+		<property name="basePackage" value="com.coldridge.valley.job.dao.meishi.read.custom"/>
+		<property name="sqlSessionFactoryBeanName" value="readMeishiSqlSessionFactory"/>
 	</bean>
 
 	<bean id="writeDataSource" class="org.logicalcobwebs.proxool.ProxoolDataSource">

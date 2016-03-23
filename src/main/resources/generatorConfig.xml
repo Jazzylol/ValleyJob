@@ -22,7 +22,7 @@
         <javaTypeResolver  type="x.flyspace.mybatisgenerator.type.CustomJavaTypeResolver">
             <property name="customTypeMap" value="TINYINT:java.lang.Integer"/>
         </javaTypeResolver>
-        <javaModelGenerator targetPackage="com.coldridge.valley.job.model.po.mbg" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="com.coldridge.valley.job.model.po" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
             <property name="renamePlugin.prefix" value=""/>
@@ -72,7 +72,7 @@
         <javaTypeResolver  type="x.flyspace.mybatisgenerator.type.CustomJavaTypeResolver">
             <property name="customTypeMap" value="TINYINT:java.lang.Integer"/>
         </javaTypeResolver>
-        <javaModelGenerator targetPackage="com.coldridge.valley.job.model.po.mbg" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="com.coldridge.valley.job.model.po" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
             <property name="renamePlugin.prefix" value=""/>

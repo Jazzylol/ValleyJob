@@ -1,4 +1,4 @@
-package com.coldridge.valley.job.model.po.mbg;
+package com.coldridge.valley.job.model.po;
 
 import java.util.ArrayList;
 import java.util.List;
